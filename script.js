@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(){
     createBoard(16);
+
+    let btn_popup = document.querySelector("#popup");
+    btn_popup.addEventListener("click", function(){
+        let size = getSize();
+        createBoard(size);
+    })
+    
 })
 
 function createBoard(size){
@@ -14,4 +21,21 @@ function createBoard(size){
         let div = document.createElement("div");
         board.insertAdjacentElement("beforeend", div);
     }
+}
+
+function getSize(){
+    let input = prompt("Enter the size of the Board");
+    let message = document.querySelector("#message");
+    if(input==""){
+        message.innerHTML = "Please provide a number"
+    }
+    else if(input<0 || input > 100){
+        message.innerHTML = "Provide a number between 1 to 100";
+    }
+    else{
+        message.innerHTML = "Fun time!"
+        return input;
+    }
+
+    
 }
